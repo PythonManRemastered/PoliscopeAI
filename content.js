@@ -90,6 +90,7 @@
 
   
   async function responseGive(userSum) {
+    console.log("F start")
     const url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent";
     const apiKey = "AIzaSyAkhNKwsWWG50-op0M1Gc_YE9h6SHXSs_M";
 
@@ -134,13 +135,15 @@
         console.error(`Error: ${response.status}`);
         console.error(`Response Text: ${await response.text()}`);
       }
-
+      console.log("F end")
       return resultText;
+
 
     } catch (error) {
       console.error("Error during API call:", error);
       return "";
     }
+    
 }
 
 })();

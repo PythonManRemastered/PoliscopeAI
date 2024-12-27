@@ -5,27 +5,16 @@ console.log(page);
 
 
   document.addEventListener("DOMContentLoaded", () => {
-
-    const toggleButton = document.getElementById("toggle");
-    if (page == "Extraction"){
-      document.getElementById("extract").addEventListener("click", async () => {
-        const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-      
-      chrome.scripting.executeScript({
-        target: { tabId: tab.id },
-        files: ["content.js"]
-    });
-
-    });
-}
-
-    // Load the toggle state from storage
+    if (page == "Dashboard"){
+      const toggleButton = document.getElementById("toggle");
+          // Load the toggle state from storage
     chrome.storage.sync.get(["isEnabled"], (data) => {
       const isEnabled = data.isEnabled ?? true; // Default to enabled
       toggleButton.textContent = isEnabled ? "Disable" : "Enable";
     });
   
     // Toggle the state when the button is clicked
+    
     toggleButton.addEventListener("click", () => {
       chrome.storage.sync.get(["isEnabled"], (data) => {
         const isEnabled = data.isEnabled ?? true;
@@ -47,6 +36,21 @@ console.log(page);
     document.getElementById("FAQ").addEventListener("click", function() {
       window.location.href = "FAQ.html";
    });
+    }
+      
+    if (page == "Extraction"){
+      document.getElementById("extract").addEventListener("click", async () => {
+        const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+      
+      chrome.scripting.executeScript({
+        target: { tabId: tab.id },
+        files: ["content.js"]
+    });
+
+    });
+}
+
+
 
 
 
