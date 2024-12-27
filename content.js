@@ -22,7 +22,7 @@
       if (plainText != "No Terms of Service content found."){
 
         // Send the plain text to your summarization API
-        const summary = await summarizeTextDummy(plainText);
+        const summary = await responseGive(plainText);
         chrome.browserAction.setBadgeText({text: 'grr' });
 
         // Display the summary in the console or notify the user
@@ -86,25 +86,59 @@
   }
 
   
-  async function summarizeText(text) {
-    const apiKey = "AIzaSyAkhNKwsWWG50-op0M1Gc_YE9h6SHXSs_M"; // Replace with your API key
-    const apiUrl = "https://api.example.com/summarize"; // Replace with your API URL
+  async function responseGive(userSum) {
+    const url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent";
+    const apiKey = "AIzaSyAkhNKwsWWG50-op0M1Gc_YE9h6SHXSs_M";
 
-    const response = await fetch(apiUrl, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${apiKey}`
+    const payload = {
+      "system_instruction": {
+        "parts": [{ "text": "Assess these terms of conditions and give a short summary of the key points." }]
       },
-      body: JSON.stringify({ text })
-    });
+      "contents": {
+        "parts": [{ "text": `${userSum}` }]
+      }
+    };
 
-    const data = await response.json();
-    return data.summary || "No summary available.";
-  }
+    try {
+      const response = await fetch(`${url}?key=${apiKey}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+      });
 
-  async function summarizeTextDummy(text) {
-      return text;
+      console.log(`Response Status Code: ${response.status}`);
+
+      let resultText = "";
+
+      if (response.ok) {
+        const result = await response.json();
+        console.log("Response JSON:");
+        console.log(JSON.stringify(result, null, 2));
+
+        if (
+          result &&
+          result.candidates &&
+          result.candidates[0].content &&
+          result.candidates[0].content.parts &&
+          result.candidates[0].content.parts[0]
+        ) {
+          resultText = result.candidates[0].content.parts[0].text;
+          console.log(`Extracted Text: ${resultText}`);
+        }
+      } else {
+        console.error(`Error: ${response.status}`);
+        console.error(`Response Text: ${await response.text()}`);
+      }
+
+      return resultText;
+
+    } catch (error) {
+      console.error("Error during API call:", error);
+      return "";
     }
+}
+
 })();
   
