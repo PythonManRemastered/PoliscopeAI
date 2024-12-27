@@ -31,5 +31,15 @@ document.getElementById("extract").addEventListener("click", async () => {
         });
       });
     });
+
+    document.getElementById("navigateButton").addEventListener("click", function() {
+        window.location.href = "Extractions.html";
+    });
+    document.getElementById("FAQ").addEventListener("click", function() {
+      window.location.href = "FAQ.html";
+   });
+
+
+    
   });
   

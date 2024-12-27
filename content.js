@@ -87,7 +87,7 @@
 
   
   async function summarizeText(text) {
-    const apiKey = "YOUR_ API_KEY"; // Replace with your API key
+    const apiKey = "AIzaSyAkhNKwsWWG50-op0M1Gc_YE9h6SHXSs_M"; // Replace with your API key
     const apiUrl = "https://api.example.com/summarize"; // Replace with your API URL
 
     const response = await fetch(apiUrl, {
