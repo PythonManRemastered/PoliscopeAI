@@ -1,15 +1,24 @@
-document.getElementById("extract").addEventListener("click", async () => {
-    const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-    
-    chrome.scripting.executeScript({
-      target: { tabId: tab.id },
-      files: ["content.js"]
-    });
-  });
+const page = document.getElementById("page_value").innerText;
+console.log(page);
+
+
+
 
   document.addEventListener("DOMContentLoaded", () => {
+
     const toggleButton = document.getElementById("toggle");
-  
+    if (page == "Extraction"){
+      document.getElementById("extract").addEventListener("click", async () => {
+        const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+      
+      chrome.scripting.executeScript({
+        target: { tabId: tab.id },
+        files: ["content.js"]
+    });
+
+    });
+}
+
     // Load the toggle state from storage
     chrome.storage.sync.get(["isEnabled"], (data) => {
       const isEnabled = data.isEnabled ?? true; // Default to enabled
@@ -38,6 +47,8 @@ document.getElementById("extract").addEventListener("click", async () => {
     document.getElementById("FAQ").addEventListener("click", function() {
       window.location.href = "FAQ.html";
    });
+
+
 
 
     

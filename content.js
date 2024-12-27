@@ -32,6 +32,9 @@
         console.log(summary);
 
       }
+      else {
+        console.log("No content found!")
+      }
 
 
     } catch (error) {
