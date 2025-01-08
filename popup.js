@@ -30,6 +30,17 @@ console.log(page);
       });
     });
 
+
+
+
+
+
+
+
+
+
+    
+
     document.getElementById("navigateButton").addEventListener("click", function() {
         window.location.href = "Extractions.html";
     });
