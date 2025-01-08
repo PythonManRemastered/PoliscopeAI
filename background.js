@@ -3,18 +3,25 @@ chrome.runtime.onInstalled.addListener(() => {
 });
 
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
-  if (changeInfo.status === "complete") {
-    chrome.storage.sync.get(["isEnabled"], (data) => {
-      if (data.isEnabled) {
+  if (changeInfo.status === "complete" && tab.url) {
+    chrome.storage.sync.clear(() => {
+      console.log("Storage cleared for new tab.");
+      chrome.action.setBadgeText({ text: "" }); 
+      
+      const excludedDomains = ["google.com"];
+      const url = new URL(tab.url);
+
+      if (!excludedDomains.some(domain => url.hostname.includes(domain))) {
         chrome.scripting.executeScript({
           target: { tabId: tabId },
           files: ["content.js"]
         });
+      } else {
+        console.log('Script not injected for: ${url.hostname}');
       }
     });
   }
 });
-
 
 // Example notification function
 function notifyUser(title, message) {
@@ -45,4 +52,6 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
  } else if (message.action === "clearBadge") {
       console.log("Clearing works");
 
-      chrome.action.setBadgeText({ text: "" }); } });
+      chrome.action.setBadgeText({ text: "" }); 
+    }
+   });
