@@ -49,6 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const dynamicSectionsContainer = document.getElementById("dynamicSections");
 
     // Load summaries and dynamically create collapsible sections
+    function updateWidgets(){
     chrome.storage.sync.get("summaries", function (obj) {
       const summaries = obj.summaries || [];
       const l = summaries.length;
@@ -58,6 +59,8 @@ document.addEventListener("DOMContentLoaded", () => {
       dynamicSectionsContainer.innerHTML = "";
 
       // Dynamically create collapsible sections
+      if (l>0) {
+        dynamicSectionsContainer.className = "";
       for (let i = 0; i < l; i++) {
         // Create collapsible button
         const collapsible = document.createElement("button");
@@ -83,7 +86,14 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         });
       }
+    }
+    else {
+
+    }
     });
+  }
+    setInterval(updateWidgets, 1000);
+    updateWidgets();
 
     document.getElementById("FAQ").addEventListener("click", function () {
       window.location.href = "FAQ.html";
