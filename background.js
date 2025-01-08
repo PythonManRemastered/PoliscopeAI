@@ -25,6 +25,15 @@ function notifyUser(title, message) {
     message: message
   });
 }
+// error fix
+
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  if (message.action === "displaySummary") {
+    // Optionally log the summary in the background script
+    console.log("Summary received:", message.summary);
+  }
+});
+
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => { 
   if (message.action === "updateBadge") {
     console.log("Adding works");

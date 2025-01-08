@@ -30,20 +30,32 @@ console.log(page);
       });
     });
 
-
-
-
-
-
-
-
-
-
     
 
     document.getElementById("navigateButton").addEventListener("click", function() {
         window.location.href = "Extractions.html";
     });
+
+    const summaryContainer = document.getElementById("output");
+    
+      // Listen for messages from the content script
+
+
+      chrome.storage.sync.get("summaries", function (obj) {
+
+        
+        summaryContainer.innerHTML = obj.summaries;
+
+    });
+
+      // chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+      //   console.log("summary is showing up");
+      //   if (message.action === "displaySummary") {
+      //     console.log("if statement of summary works");
+      //     summaryContainer.innerHTML = '<p>hello</p>';
+      //   }
+      // });
+
     document.getElementById("FAQ").addEventListener("click", function() {
       window.location.href = "FAQ.html";
    });

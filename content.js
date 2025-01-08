@@ -24,8 +24,17 @@
       );
 
       console.log("All summaries completed:", summaries);
-      alert(`Summary of All Documents:\n\n${summaries.join("\n")}`);
-    } catch (error) {
+      // alert(`Summary of All Documents:\n\n${summaries.join("\n")}`);
+
+      chrome.storage.sync.set({ "summaries":summaries }, () => {
+        console.log("Summary saved to storage:", summaries);
+      });
+
+      // chrome.runtime.sendMessage({ action: "displaySummary", summary: summaries});
+
+    } 
+    
+    catch (error) {
       console.error("Unexpected error during summary generation:", error);
       alert("Error generating summaries. Please check the console.");
     }
@@ -110,7 +119,9 @@
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
+
     });
+
 
     if (response.ok) {
       const result = await response.json();
@@ -123,3 +134,5 @@
     }
   }
 })();
+
+
