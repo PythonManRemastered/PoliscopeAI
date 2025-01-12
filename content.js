@@ -135,8 +135,7 @@
             describe the basic clauses of the terms and condition, privacy policy, or document agreement given. Do not exceed 100 words in total for the
             entire section. Ensure the text you provide
             is simplified, and that any and all legal-terms are replaced by easy-to-read English. Do not exceed 100 words in total.
-            If words which are intentionally misleading,
-            such as 'may' or 'including' are written in the context of the document, or any ambigious statements are provided by the provider, 
+            If any ambigious statements (i.e. waivers your right...) are provided by the provider, 
             flag this to the user and tell them to read further themselves prior to using the program. Do not 
             exceed 100 words in total. Moreover, highlight and flag
             any clause which states that the user waives any right whatsoever, and flag which rights the user is wavering
