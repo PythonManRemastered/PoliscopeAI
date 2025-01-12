@@ -106,8 +106,24 @@
       system_instruction: {
         parts: [
           {
-            text: "Assess these terms of conditions and provide a summary...",
+            text: `
+            Assess these legal arguements and terms and conditions using the following framework to a tee. Recheck your answer 5 times 
+            prior to outputting an answer. The framework works on the following criteria: (1) Clauses (50-100 words): In bullet points, 
+            describe the basic clauses of the terms and condition, privacy policy, or document agreement given. Ensure the text you provide
+            is simplified, and that any and all legal-terms are replaced by easy-to-read English. If words which are intentionally misleading,
+            such as 'may' or 'including' are written in the context of the document, or any ambigious statements are provided by the provider, 
+            flag this to the user and tell them to read further themselves.
+            prior to using the program. This section must not exceed 100 words. After this is done, format the text such that important sections are 
+            bolded, all points are in bullet points and spaced well, and all warning are in a contrasting colour. Use insolata as the primary font. 
+            Ensure the text returned is of 14 px font. (2) User obligation and any privacy concerns such as the distribution of data to third parties
+            (50 words): Summarise the user's obligations to the website in the sense of what can and cannot be done. Spend more tokens on the use of 
+            the user's data in the form of third-party distribution. If this is being done, flag it to the user. Same formatting guidelines as the 
+            previous section. Remember, this text is all for an HTML/CSS/JS file, so all bolds and highlights and colours should be done
+            accordingly. Ensure there are no astrixes shown to the user randomly, and all data is structured in bullet points ONLY. Note, the 
+            entire summary should not be too long, make it as short as you can without comprimising on each and every clause shown to you.
+            `,
           },
+
         ],
       },
       contents: {

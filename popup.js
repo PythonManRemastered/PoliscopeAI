@@ -47,53 +47,60 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     const dynamicSectionsContainer = document.getElementById("dynamicSections");
+    let intervalId; // Store the interval ID for stopping
 
     // Load summaries and dynamically create collapsible sections
-    function updateWidgets(){
-    chrome.storage.sync.get("summaries", function (obj) {
-      const summaries = obj.summaries || [];
-      const l = summaries.length;
-      console.log(l);
+    function updateWidgets() {
+      chrome.storage.sync.get("summaries", function (obj) {
+        const summaries = obj.summaries || [];
+        const l = summaries.length;
+        console.log(l);
 
-      // Clear the dynamic sections container
-      dynamicSectionsContainer.innerHTML = "";
+        // Clear the dynamic sections container
+        dynamicSectionsContainer.innerHTML = "";
 
-      // Dynamically create collapsible sections
-      if (l>0) {
-        dynamicSectionsContainer.className = "";
-      for (let i = 0; i < l; i++) {
-        // Create collapsible button
-        const collapsible = document.createElement("button");
-        collapsible.className = "collapsible";
-        collapsible.textContent = `Summary ${i + 1}`;
+        // Dynamically create collapsible sections
+        if (l > 0) {
+          dynamicSectionsContainer.className = ""; // Ensure it's not hidden
+          for (let i = 0; i < l; i++) {
+            // Create collapsible button
+            const collapsible = document.createElement("button");
+            collapsible.className = "collapsible";
+            collapsible.textContent = `Summary ${i + 1}`;
 
-        // Create content div
-        const contentDiv = document.createElement("div");
-        contentDiv.className = "content";
-        contentDiv.innerHTML = `<p>${summaries[i]}</p>`; // Populate with summary content
+            // Create content div
+            const contentDiv = document.createElement("div");
+            contentDiv.className = "content";
+            contentDiv.innerHTML = `<p>${summaries[i]}</p>`; // Populate with summary content
 
-        // Append to container
-        dynamicSectionsContainer.appendChild(collapsible);
-        dynamicSectionsContainer.appendChild(contentDiv);
+            // Append to container
+            dynamicSectionsContainer.appendChild(collapsible);
+            dynamicSectionsContainer.appendChild(contentDiv);
 
-        // Add collapsible functionality
-        collapsible.addEventListener("click", function () {
-          this.classList.toggle("active");
-          if (contentDiv.style.maxHeight) {
-            contentDiv.style.maxHeight = null;
-          } else {
-            contentDiv.style.maxHeight = contentDiv.scrollHeight + "px";
+            // Add collapsible functionality
+            collapsible.addEventListener("click", function () {
+              this.classList.toggle("active");
+              if (contentDiv.style.maxHeight) {
+                contentDiv.style.maxHeight = null;
+              } else {
+                contentDiv.style.maxHeight = contentDiv.scrollHeight + "px";
+              }
+            });
           }
-        });
-      }
-    }
-    else {
 
+          // Stop the interval once all summaries are loaded
+          if (intervalId) {
+            clearInterval(intervalId);
+            intervalId = null;
+            console.log("Collapsible sections loaded. Interval stopped.");
+          }
+        }
+      });
     }
-    });
-  }
-    setInterval(updateWidgets, 1000);
-    updateWidgets();
+
+    // Start the interval to update widgets
+    intervalId = setInterval(updateWidgets, 1000);
+    updateWidgets(); // Initial call
 
     document.getElementById("FAQ").addEventListener("click", function () {
       window.location.href = "FAQ.html";
