@@ -127,14 +127,18 @@
         parts: [
           {
             text: `
+            Reduce the output of this prompt as much as mechanically possible.
             Assess these legal arguements and terms and conditions using the following framework to a tee. Recheck your answer 5 times 
             prior to outputting an answer. Make the output suitable for reading.
             
-            The framework works on the following criteria: (1) Clauses (50-100 words): In bullet points, 
-            describe the basic clauses of the terms and condition, privacy policy, or document agreement given. Ensure the text you provide
-            is simplified, and that any and all legal-terms are replaced by easy-to-read English. If words which are intentionally misleading,
+            The framework works on the following criteria: (1) Clauses (50 words): In bullet points, 
+            describe the basic clauses of the terms and condition, privacy policy, or document agreement given. Do not exceed 100 words in total for the
+            entire section. Ensure the text you provide
+            is simplified, and that any and all legal-terms are replaced by easy-to-read English. Do not exceed 100 words in total.
+            If words which are intentionally misleading,
             such as 'may' or 'including' are written in the context of the document, or any ambigious statements are provided by the provider, 
-            flag this to the user and tell them to read further themselves prior to using the program. Moreover, highlight and flag
+            flag this to the user and tell them to read further themselves prior to using the program. Do not 
+            exceed 100 words in total. Moreover, highlight and flag
             any clause which states that the user waives any right whatsoever, and flag which rights the user is wavering
             This section must not exceed 100 words. After this is done, format the text such that important sections are 
             bolded, all points are in bullet points and spaced well, and all warning are in a contrasting colour. Use insolata as the primary font. 
@@ -146,7 +150,9 @@
             entire summary should not be too long, make it as short as you can without comprimising on each and every clause shown to you.
             
             Finally, ensure the formatting for all summaries provided are the exact same. Font size for body text should be 14.  Font type 
-            should be insolata. Font size for titles should be 25.
+            should be insolata. Font size for titles should be 25. Left-allign are information.
+
+            The total content should not be larger than 100 words. Your current quotas reach 300. DO NOT WRITE MORE THAN 100 words. 
             `,
           },
 

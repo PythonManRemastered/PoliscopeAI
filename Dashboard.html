@@ -3,11 +3,11 @@
 <head>
   <title>Policy Shield</title>
   <style>
-body {
+    body {
       font-family: Arial, sans-serif;
       padding: 10px;
       text-align: center;
-      width: 300px;
+      width: 400px;
       height: 200px;
     }
 
@@ -26,6 +26,7 @@ body {
       text-align: left;
       outline: none;
       font-size: 15px;
+      border-radius: 12px; /* Rounded corners for collapsible buttons */
     }
 
     .active, .collapsible:hover {
@@ -70,6 +71,22 @@ body {
       }
     }
 
+    /* General button styling */
+    button {
+      padding: 12px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      border-radius: 12px; /* Rounded corners for all buttons */
+      background-color: #3498db;
+      color: white;
+      transition: background-color 0.3s ease;
+      margin-bottom: 15px; /* Add spacing between buttons */
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
   </style>
 
   <script src="popup.js" defer></script> 
@@ -77,20 +94,16 @@ body {
 </head>
 <body>
 
-  <h1> PolicyPulse  </h1>
-  <h5> Stay safe with simplified insights </h2>
+  <h1> PolicyPulse </h1>
+  <h5> Stay safe with simplified insights </h5>
 
   <button id="toggle">Enable</button>
 
-  
-  <!-- <div id="output"></div> -->
-
-  <div id="dynamicSections" class="loader" style = "justify-self: center; margin: 25px;">
-
-  </div>
+  <div id="dynamicSections" class="loader" style="justify-self: center; margin: 25px;"></div>
 
   <div id="page_value" style="display: none;">Dashboard</div>
-  <button id ="FAQ"> FAQs </button>
+  
+  <button id="FAQ">FAQs</button>
+  
 </body>
 </html>
-
