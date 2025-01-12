@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "T&C Summarizer",
+  "name": "Policy Shield",
   "version": "1.0",
   "description": "Automatically extract and summarize Terms & Conditions from websites.",
   "permissions": [
