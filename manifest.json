@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Policy Shield",
   "version": "1.0",
-  "description": "Automatically extract and summarize Terms & Conditions from websites.",
+  "description": "The first completely-free, automated terms and conditions summariser.",
   "permissions": [
     "activeTab",
     "storage",

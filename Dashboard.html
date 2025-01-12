@@ -3,67 +3,74 @@
 <head>
   <title>Policy Shield</title>
   <style>
-    body {
+body {
       font-family: Arial, sans-serif;
       padding: 10px;
       text-align: center;
       width: 300px;
       height: 200px;
-
     }
+
     #toggle {
       margin-top: 20px;
     }
 
+    /* Collapsible button styling */
     .collapsible {
-  background-color: #777;
-  color: white;
-  cursor: pointer;
-  padding: 18px;
-  width: 100%;
-  border: none;
-  text-align: left;
-  outline: none;
-  font-size: 15px;
-}
+      background-color: #777;
+      color: white;
+      cursor: pointer;
+      padding: 18px;
+      width: 100%;
+      border: none;
+      text-align: left;
+      outline: none;
+      font-size: 15px;
+    }
 
-.active, .collapsible:hover {
-  background-color: #555;
-}
+    .active, .collapsible:hover {
+      background-color: #555;
+    }
 
-.content {
-  padding: 0 18px;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.2s ease-out;
-  background-color: #f1f1f1;
-}
+    .content {
+      padding: 0 18px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.2s ease-out;
+      background-color: #f1f1f1;
+    }
 
-.loader {
-  border: 16px solid #f3f3f3;
-  border-radius: 50%;
-  border-top: 16px solid blue;
-  border-bottom: 16px solid blue;
-  width: 16px;
-  height: 16px;
-  -webkit-animation: spin 2s linear infinite;
-  animation: spin 2s linear infinite;
-}
+    /* Loader animation styling */
+    .loader {
+      border: 16px solid #f3f3f3;
+      border-radius: 50%;
+      border-top: 16px solid blue;
+      border-bottom: 16px solid blue;
+      width: 16px;
+      height: 16px;
+      -webkit-animation: spin 2s linear infinite;
+      animation: spin 2s linear infinite;
+    }
 
-@-webkit-keyframes spin {
-  0% { -webkit-transform: rotate(0deg); }
-  100% { -webkit-transform: rotate(360deg); }
-}
+    @-webkit-keyframes spin {
+      0% {
+        -webkit-transform: rotate(0deg);
+      }
+      100% {
+        -webkit-transform: rotate(360deg);
+      }
+    }
 
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
 
   </style>
-
-
 
   <script src="popup.js" defer></script> 
 
@@ -74,7 +81,7 @@
   <h5> Stay safe with simplified insights </h2>
 
   <button id="toggle">Enable</button>
-  <button id ="navigateButton" > Go to next page </button>
+
   
   <!-- <div id="output"></div> -->
 
@@ -86,4 +93,4 @@
   <button id ="FAQ"> FAQs </button>
 </body>
 </html>
- 
+

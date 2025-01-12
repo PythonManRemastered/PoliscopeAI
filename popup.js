@@ -42,10 +42,6 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
 
-    document.getElementById("navigateButton").addEventListener("click", function () {
-      window.location.href = "Extractions.html";
-    });
-
     const dynamicSectionsContainer = document.getElementById("dynamicSections");
     let intervalId; // Store the interval ID for stopping
 

@@ -1,28 +1,111 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Policy Shield</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      padding: 10px;
+      padding: 20px;
       text-align: center;
-
+      line-height: 1.6;
     }
 
+    h1 {
+      font-size: 28px;
+      color: #333;
+      margin-bottom: 20px;
+    }
 
-    #toggle {
+    p {
+      font-size: 16px;
+      color: #555;
+    }
+
+    button {
+      padding: 10px 15px;
       margin-top: 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      background-color: #007bff;
+      color: white;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .faq-section {
+      margin: 30px auto;
+      text-align: left;
+      max-width: 600px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 20px;
+      background-color: #f9f9f9;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .faq-section h2 {
+      font-size: 22px;
+      margin-bottom: 15px;
+      color: #444;
+    }
+
+    .faq-question {
+      font-weight: bold;
+      margin-top: 15px;
+      color: #333;
+    }
+
+    .faq-answer {
+      margin-top: 5px;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    .contact-email {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    .contact-email:hover {
+      text-decoration: underline;
+    }
+
+    h5 {
+      margin-top: 30px;
+      font-size: 16px;
+      color: #555;
     }
   </style>
-  <script src="popup.js" defer></script>
 </head>
 <body>
-  <h1>FAQs</h1>
-  <h5> For further queries please contact aadi.chakraborty@gmail.com </h5>
-  <button id="extract">Extract & Summarize</button>
-  <div id="output"></div>
-  <div id="page_value" style="display: none;">FAQ</div>
+  <h1>Policy Shield - Troubleshooting</h1>
+  <p>If you have any questions or encounter any issues, refer to the FAQ below or contact us directly.</p>
+
+  <div class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+    <div>
+      <div class="faq-question">Q.) What can I do if the file is not fetched by the program?</div>
+      <div class="faq-answer">
+        On some websites, CORS policies may prevent us from legally accessing documents concerning privacy policy. Please read the privacy policy through the provided link on the website if this issue occurs.
+      </div>
+    </div>
+    <div>
+      <div class="faq-question">Q.) I found a bug. How can I report it?</div>
+      <div class="faq-answer">
+        Please email me directly at <a href="mailto:aadi.chakraborty@gmail.com" class="contact-email">aadi.chakraborty@gmail.com</a>.
+      </div>
+    </div>
+  </div>
+
   <button id="homepage">Go back to home</button>
+
+  <h5>For further queries, contact <a href="mailto:aadi.chakraborty@gmail.com" class="contact-email">aadi.chakraborty@gmail.com</a></h5>
 </body>
 </html>
