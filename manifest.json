@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Policy Shield",
+  "name": "Poliscope",
   "version": "1.0",
   "description": "The first completely-free, automated terms and conditions summariser.",
   "permissions": [

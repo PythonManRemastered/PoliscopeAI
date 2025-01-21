@@ -85,9 +85,10 @@
       color: #555;
     }
   </style>
+  <script src="scripts/faq.js" defer></script>
 </head>
 <body>
-  <h1>Policy Shield - Troubleshooting</h1>
+  <h1>Poliscope - Troubleshooting</h1>
   <p>If you have any questions or encounter any issues, refer to the FAQ below or contact us directly.</p>
 
   <div class="faq-section">
@@ -106,8 +107,21 @@
     </div>
   </div>
 
-  <button id="homepage">Go back to home</button>
+  <div id="page_value" style="display: none;">Dashboard</div>
+  
+  <button id="homepage">Back to home</button>
 
   <h5>For further queries, contact <a href="mailto:aadi.chakraborty@gmail.com" class="contact-email">aadi.chakraborty@gmail.com</a></h5>
+  
+  <script>
+    document.getElementById("homepage").addEventListener("click", function () {
+      window.location.href = "dashboard.html"; // Redirects to Dashboard.html
+    });
+  </script>
+
+
 </body>
 </html>
+
+
+

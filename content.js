@@ -117,10 +117,31 @@
         .join("\n\n");
     }
   }
+  async function getApiKey() { 
+    const url = "https://pythonmanremastered.github.io/key.json";
+    try 
+    { const response = await fetch(url); 
+      if (!response.ok) { 
+        throw new Error(`HTTP error! Status: ${response.status}`); 
+      } 
+      const data = await response.json(); 
+      return data.key; // Return the key 
+    } 
+      catch (error) 
+      
+      { 
+        console.error("Error fetching the API key:", error); 
+        return null; // Return null in case of error 
+      }
+    }
+
+
+
+
 
   async function responseGive(userSum, link, index) {
     const apiUrl = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent";
-    const apiKey = "AIzaSyAkhNKwsWWG50-op0M1Gc_YE9h6SHXSs_M";
+    const apiKey = await getApiKey();
 
     const payload = {
       system_instruction: {
