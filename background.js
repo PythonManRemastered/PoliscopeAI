@@ -2,6 +2,8 @@ chrome.runtime.onInstalled.addListener(() => {
   console.log("T&C Summarizer Extension Installed!");
 });
 
+
+
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
   if (changeInfo.status === "complete" && tab.url) {
     chrome.storage.sync.clear(() => {
